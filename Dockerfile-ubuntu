@@ -19,13 +19,13 @@ RUN apt-get update
 RUN apt-get install -y $PACKAGES
 
 # Install Go
-RUN curl -L https://go.dev/dl/go${GO_VERSION}.linux-$BUILDARCH.tar.gz | tar -C $LOCAL -xzf -
+RUN curl -L "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" | tar -C $LOCAL -xzf -
 
 # Install Ignite
-RUN curl -L https://get.ignite.com/cli@v${IGNITE_VERSION}! | bash
+RUN exec curl -L "https://get.ignite.com/cli@v${IGNITE_VERSION}"! | bash
 
 # Install Node
-RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION} | bash -
+RUN curl -fsSL "https://deb.nodesource.com/setup_${NODE_VERSION}" | bash -
 RUN apt-get install -y nodejs
 
 EXPOSE 1317 4500 5000 26657
